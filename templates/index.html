@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Evaluation</title>
+</head>
+<body>
+    {% for result in results %}
+        <h2>{{ result.model_name }}</h2>
+
+        <!-- Display ROC Curve Plot -->
+        <div>
+            <h3>ROC Curve</h3>
+            <img src="data:image/png;base64,{{ result.roc_plot_base64 }}" alt="ROC Curve Plot">
+        </div>
+
+        <!-- Display Confusion Matrix -->
+        <div>
+            <h3>Confusion Matrix</h3>
+            <img src="data:image/png;base64,{{ result.confusion_matrix_base64 }}" alt="Confusion Matrix">
+        </div>
+
+        <!-- Display Precision, Recall, and F1 Score -->
+        <div>
+            <h3>Evaluation Metrics</h3>
+            <p>Precision: {{ result.precision }}</p>
+            <p>Recall: {{ result.recall }}</p>
+            <p>F1 Score: {{ result.f1 }}</p>
+        </div>
+
+        <hr>
+    {% endfor %}
+
+    <script>
+        // You can add additional JavaScript code here if needed
+    </script>
+</body>
+</html>
